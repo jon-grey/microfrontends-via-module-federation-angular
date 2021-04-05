@@ -7,7 +7,7 @@ Until now we have gone from monolith to microservices, but frontend granularizat
 
 ![](images/README/2021-04-05-02-57-52.png)
 
-With recent development of Webpack 5, we can easier bring concept of microfrontends to production. Thanks to `@angular-architects/module-federation` we can also use Angular as our shell to contain other microfrontends
+With recent development of Webpack 5, we can easier bring concept of microfrontends in pair with microservices to production. Thanks to `@angular-architects/module-federation` we can also use Angular as our shell to contain other microfrontends
 
 
 ## Why to use microfrontends?
@@ -44,13 +44,11 @@ Quoted from **Scott Yeatts**
 ## Concept
 
 
-Split frontend on individual micro apps that are put together by shell/container app
+Split frontend on individual micro apps that are put together by shell/container app. Microfrontends communicate to backend independently
 
 ![](images/README/2021-04-05-03-13-26.png)
 
-but they communicate with backend on their own.
-
-Here we can introduce shared libs, ie for styling
+Here we can introduce shared libs, ie for styling, animations - those that wont change to ofent by each team hands.
 
 ![](images/README/2021-04-05-03-19-14.png)
 
@@ -65,3 +63,36 @@ Here we can introduce shared libs, ie for styling
 - **Applications can be deployed independently:** we do not have to wait for other microfrontends  remote modules for compilation
 
 - **Applications can be implemented in different technologies:** integrate seamlessly different frameworks
+
+
+# Setup
+
+## Development
+
+### Run all microservices at once in parallel
+
+```sh
+# angular does not support webpack 5 by default
+# so we need to use yarn for building
+ng config -g cli.packageManager yarn
+
+# install dependencies
+yarn
+
+# build shell, mfe1, ui-lib, and message-bus(-lib)
+# and start: shell, mfe1
+npm run dev
+```
+
+
+## Github
+
+
+```sh
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:jon-grey/sample-app-module-federation-angular.git
+git push -u origin main
+```
