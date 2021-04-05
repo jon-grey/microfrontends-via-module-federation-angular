@@ -1,0 +1,13 @@
+<ul>
+    <li><img src="../assets/angular.png" width="50"></li>
+    <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/flights/flights-search" routerLinkActive="active">Flights</a></li>
+    <li><a routerLink="/bookings" routerLinkActive="active">Bookings</a></li>
+</ul>
+
+<div [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+  <!-- <router-outlet ></router-outlet> -->
+
+
